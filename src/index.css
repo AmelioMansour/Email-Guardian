@@ -4,7 +4,7 @@
 
 
 body {
-  background-color: #999999;
+  background-color: #000000;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -17,3 +17,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.gradient-text {
+  background-image: linear-gradient(45deg, #6ad9ec, #594dd6);
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p,h1,ul,h2 {
+  background-image: linear-gradient(45deg, #6ad9ec, #5141ff);
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/*  */
+/* * {
+  background-color: #f3ec78; 
+  background-image: linear-gradient(45deg, #f3ec78, #af4261);
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
