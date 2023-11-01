@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai'; // Import React icons
+
 
 function EmailAnalyzer() {
     const [emailContent, setEmailContent] = useState('');
@@ -64,10 +66,10 @@ function EmailAnalyzer() {
     };
 
     return (
-        <div className="bg-black text-black p-16 min-h-screen flex flex-col items-center justify-center">
+        <div className="bg-black text-black p-16 min-h-screen flex flex-col items-center ">
             <div className="text-center">
-                <h1 className="text-3xl font-bold mb-4">Email Fraud Detector</h1>
-                <p className="mb-4">Paste the email content below and click "Analyze" to get the spam and fraudulent ratings.</p>
+                <h1 className="text-4xl font-bold mb-4">Email Fraud Detector</h1>
+                <p className="mb-4 text-lg" >Paste the email content below and click "Analyze" to get the spam and fraudulent ratings.</p>
             </div>
             <form onSubmit={handleSubmit} className="w-full max-w-xl">
                 <textarea
@@ -82,16 +84,41 @@ function EmailAnalyzer() {
                 </button>
             </form>
             {result && (
-                <div className="mt-4 text-left w-full max-w-md">
-                    <h2 className="text-xl font-semibold mb-2">Results:</h2>
-                    <h1>{result}</h1>
+                <div className="mt-6 mb-4 text-left w-full max-w-lg text-xl"> {/* Adjust max-w-lg for a wider section */}
+                    <h1 className="font-bold text-2xl mb-2">Results:</h1>
+                    <ul className="list-disc pl-6">
+                        {result.split('\n').map((line, index) => {
+                            // Check if the line contains a score and parse it
+                            const scoreMatch = line.match(/(\d+)/);
+                            if (scoreMatch) {
+                                const score = parseInt(scoreMatch[0]);
+                                return (
+                                    <li key={index}>
+                                        {score > 20 ? (
+                                            <AiOutlineCloseCircle className="inline text-red-600" />
+                                        ) : (
+                                            <AiOutlineCheckCircle className="inline text-green-600" />
+                                        )}{' '}
+                                        {line}
+                                    </li>
+                                );
+                            }
+                            return (
+                                <li key={index}>
+                                    <AiOutlineCheckCircle className="inline text-green-600" /> {line}
+                                </li>
+                            );
+                        })}
+                    </ul>
                 </div>
             )}
         </div>
     );
-
-
-
 }
+
+
+
+
+
 
 export default EmailAnalyzer;
