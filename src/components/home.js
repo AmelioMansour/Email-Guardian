@@ -17,7 +17,7 @@ function EmailAnalyzer() {
         const prompt = `Please analyze the following email content for spam or fraudulent
          content and provide a rating on a scale of 1 to 100, where 1 means not spam or fraudulent
           at all, and 100 means highly likely to be spam or fraudulent. Please grade the email 
-          very strictly.
+          very strictly. Please only provide the rating and do not provide any other feedback.
 
         Email Content:
         "${emailContent}"
@@ -38,7 +38,7 @@ function EmailAnalyzer() {
             const response = await axios.post(
                 'https://api.openai.com/v1/chat/completions',
                 {
-                    model: 'gpt-3.5-turbo-0613',
+                    model: 'gpt-4-1106-preview',
                     temperature: 0.0,
                     messages: [
 
