@@ -1,9 +1,10 @@
-import './index.css';
-import Navbar from './components/navbar';
-import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
-import HowItWorks from './components/how';
-import Results from './components/results';
-import Home from './components/home';
+import "./index.css";
+import Navbar from "./components/navbar";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
+import HowItWorks from "./components/how";
+import Results from "./components/results";
+import Home from "./components/home";
+import SpamInfo from "./components/SpamInfo";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="App bg-secondary text-white">
         <Navbar />
         <Routes>
+          <Route path="/spam-info" element={<SpamInfo />} />
           <Route path="/" element={<Home />} />
           <Route path="/how" element={<HowItWorks />} />
           <Route path="/results" element={<Results />} />
